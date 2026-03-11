@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Reports.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="500"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"        
+        x:Class="Reports.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Reports">
+    <Grid ColumnDefinitions="Auto,*" Margin="20">
+		<Grid.Styles>           
+			<Style Selector="HeaderedContentControl">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="BorderBrush" Value="LightGray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style Selector="HeaderedContentControl > Grid">
+				<Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="20"/>
+            </Style> 
+
+            <Style Selector="StackPanel">
+				<Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Orientation" Value="Horizontal"/>                
+            </Style>
+
+            <Style Selector="StackPanel > Button">
+				<Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                <Setter Property="Width" Value="74"/>
+                                <Setter Property="Height" Value="30"/>
+                                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Styles>
+
+        <HeaderedContentControl Header="Guards">
+                <Grid RowDefinitions="Auto,Auto,Auto">
+					<TextBlock Text="Select security guard:" Margin="5,0,0,15"/>
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center"
+                              Width="240" Height="30" Margin="5,0,0,10"
+                              Name="cmbGuards" Grid.Row="1">
+                        <ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding FullName}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    
+                    <StackPanel Grid.Row="2">
+                        <Button Name="btnAddGuard" Content="Add"/>
+                        <Button Name="btnEditGuard" Content="Edit"/>
+                        <Button Name="btnDeleteGuard" Content="Delete"/>
+                    </StackPanel>
+                </Grid>
+        </HeaderedContentControl>
+
+        <HeaderedContentControl Header="Reports" Grid.Column="1">
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+				<Grid.Styles>
+					<Style Selector="Grid > TextBlock">
+						<Setter Property="Margin" Value="5"/>
+                    </Style>
+
+                    <Style Selector="TextBox,ComboBox">
+						<Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Width" Value="240"/>
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
+                </Grid.Styles>
+
+                <TextBlock Text="First name:"/>
+                <TextBox Name="txtFirstName" IsReadOnly="True" Grid.Row="1"/>
+
+                <TextBlock Text="Last name:" Grid.Row="2"/>
+                <TextBox Name="txtLastName" IsReadOnly="True" Grid.Row="3"/>
+
+                <TextBlock Text="Reports:" Grid.Row="4"/>
+                <ComboBox Name="cmbReports" Grid.Row="5">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Title}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+               
+                <StackPanel HorizontalAlignment="Center" Grid.Row="6">
+                    <Button Name="btnAddReport" Content="Add"/>
+                    <Button Name="btnEditReport" Content="Edit"/>
+                    <Button Name="btnDeleteReport" Content="Delete"/>
+                </StackPanel>
+            </Grid>
+        </HeaderedContentControl>
+    </Grid>
+</Window>

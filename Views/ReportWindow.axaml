@@ -1,0 +1,100 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"        
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"        
+        SizeToContent="WidthAndHeight"
+        x:Class="Reports.ReportWindow"
+        Title="Report">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="Auto,Auto,Auto"
+          Margin="20">
+		<Grid.Styles>
+			<Style Selector="TextBlock">
+				<Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style Selector="TextBox:not(CalendarDatePicker TextBox),ComboBox,CalendarDatePicker">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="230"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style Selector="TextBox.description">
+				<Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="AcceptsReturn" Value="True"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="Width" Value="230"/>
+                <Setter Property="Height" Value="120"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style Selector="CheckBox">
+				<Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style Selector="Button">
+				<Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>               
+                <Setter Property="Width" Value="70"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Styles>
+
+        <TextBlock Text="Title:"/>
+        <TextBox Name="txtTitle" Grid.Column="1"/>
+
+        <TextBlock Text="Store:" Grid.Row="1"/>
+        <TextBox Name="txtStore" Grid.Row="1" Grid.Column="1"/>
+
+        <TextBlock Text="Created:" Grid.Row="2"/>
+        <CalendarDatePicker Name="calendarDate" Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="Products:" Grid.Row="3"/>
+        <ComboBox Name="cmbProducts" Grid.Row="3" Grid.Column="1">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock HorizontalAlignment="Left" Text="{Binding Title}" Margin="0"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+		
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Grid.Row="4" Grid.Column="1">
+            <Button Name="btnAddProduct" Content="Add"/>
+            <Button Name="btnEditProduct" Content="Edit"/>
+            <Button Name="btnRemoveProduct" Content="Remove"/>
+        </StackPanel>
+
+        <TextBlock Text="Description:" Grid.Row="5"/>
+        <TextBox Classes="description" Name="txtDescription" Grid.Row="5" Grid.Column="1"/>
+
+        <TextBlock Text="Manager:" Grid.Row="6"/>
+        <TextBox Name="txtManager" Grid.Row="6" Grid.Column="1"/>
+
+        <TextBlock Text="Paid:" Grid.Row="7"/>
+        <CheckBox Name="chkPaid" Grid.Row="7" Grid.Column="1"/>
+
+        <TextBlock Text="Reported:" Grid.Row="8"/>
+        <CheckBox Name="chkReported" Grid.Row="8" Grid.Column="1"/>
+
+        <TextBlock Text="Total:" Grid.Row="9"/>
+        <TextBlock Name="txtTotal" HorizontalAlignment="Left" Grid.Row="9" Grid.Column="1"/>
+
+        <Button Name="btnSaveReport" Content="Save" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="150" Height="30" Margin="5"
+                Grid.Row="10" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
