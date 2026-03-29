@@ -3,6 +3,7 @@ using ReactiveUI.Avalonia;
 using Reports.Models;
 using Reports.Utility;
 using Reports.ViewModels;
+using System.Reactive;
 using System.Reactive.Linq;
 
 namespace Reports.Views
@@ -33,6 +34,24 @@ namespace Reports.Views
                     interaction.SetOutput(output);
                 }));
 
+                d(Interactions.StatisticInteraction.RegisterHandler(interaction =>
+                {
+                    var win = new StatisticWindow(); 
+                    win.DataContext = interaction.Input;
+                    win.Show();
+
+                    interaction.SetOutput(Unit.Default);
+                }));
+
+                d(Interactions.ShopliftersInteraction.RegisterHandler(interaction =>
+                {
+                    var win = new ShopliftersWindow();
+                    win.DataContext = interaction.Input;
+                    win.Show();
+
+                    interaction.SetOutput(Unit.Default);
+                }));
+
                 d(this.OneWayBind(ViewModel, vm => vm.Guards, view => view.cmbGuards.ItemsSource));
                 d(this.Bind(ViewModel, vm => vm.SelectedGuard, view => view.cmbGuards.SelectedItem));
 
@@ -45,11 +64,13 @@ namespace Reports.Views
                 
                 d(this.OneWayBind(ViewModel, vm => vm.SelectedGuard!.Reports, view => view.cmbReports.ItemsSource));
                 d(this.Bind(ViewModel, vm => vm.SelectedReport, view => view.cmbReports.SelectedItem));
-                //d(this.WhenAnyValue(x => x.ViewModel!.SelectedReport).BindTo(this, view => view.cmbReports.SelectedItem));
-
+                
                 d(this.BindCommand(ViewModel,vm => vm.AddReportCmd,view => view.btnAddReport));
                 d(this.BindCommand(ViewModel,vm => vm.EditReportCmd,view => view.btnEditReport));
                 d(this.BindCommand(ViewModel,vm => vm.DeleteReportCmd,view => view.btnDeleteReport));
+
+                d(this.BindCommand(ViewModel, vm => vm.ShowStatisticCmd, view => view.btnStats));
+                d(this.BindCommand(ViewModel, vm => vm.ShowShopliftersCmd,view => view.btnShoplifters));
             });
         }
     }

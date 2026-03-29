@@ -3,7 +3,6 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Reports.Models
 {
@@ -31,7 +30,12 @@ namespace Reports.Models
         [Reactive]
         public bool IsReported { get; set; }
         [JsonProperty]
-        public ObservableCollection<Product> Products { get; set; }
-        public decimal Total => Products.Sum(p => p.Price * p.Quantity);
+        [Reactive]
+        public decimal Total { get; set; }
+        [JsonProperty]
+        public ObservableCollection<Product> Products { get; set; } = new();
+        [JsonProperty]
+        public ObservableCollection<Shoplifter> Shoplifters { get; set; } = new();
+        
     }
 }

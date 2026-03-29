@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="650" d:DesignHeight="650"
+        x:Class="Reports.ShopliftersWindow"
+        Width="650" Height="650"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Title="Shoplifters">
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontWeight="Bold" FontSize="24"
+                   Text="List of caught shoplifters"
+                   Margin="5"/>
+
+		<ListBox Name="cmbShoplifters" Grid.Row="1" Margin="15">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel>
+                        <Border BorderBrush="LightGray" BorderThickness="1"
+                                Width="100" Height="100"
+                                Margin="5">
+                            <Image Name="imgPhoto" Source="{Binding ImagePath,Converter={StaticResource StringToImage}}" Stretch="Fill"/>
+                        </Border>
+
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   FontWeight="Bold" Margin="5"
+                                   Text="{Binding FullName,FallbackValue='Unknown'}"/>
+                    </StackPanel>
+                </DataTemplate> 
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

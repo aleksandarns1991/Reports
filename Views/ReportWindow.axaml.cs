@@ -26,6 +26,15 @@ public partial class ReportWindow : ReactiveWindow<ReportViewModel>
                 interaction.SetOutput(output);
             }));
 
+            d(Interactions.ShoplifterInteraction.RegisterHandler(async interaction =>
+            {
+                var win = new ShoplifterWindow();
+                win.DataContext = interaction.Input;
+
+                var output = await win.ShowDialog<Shoplifter>(this);
+                interaction.SetOutput(output);
+            }));
+
             d(this.Bind(ViewModel, vm => vm.Title, view => view.txtTitle.Text));
             d(this.Bind(ViewModel,vm => vm.StoreNumber,view => view.txtStore.Text));
             d(this.Bind(ViewModel, vm => vm.CreatedAt, view => view.calendarDate.SelectedDate));
@@ -36,6 +45,13 @@ public partial class ReportWindow : ReactiveWindow<ReportViewModel>
             d(this.BindCommand(ViewModel, vm => vm.AddProductCmd, view => view.btnAddProduct));
             d(this.BindCommand(ViewModel,vm => vm.EditProductCmd,view => view.btnEditProduct));
             d(this.BindCommand(ViewModel, vm => vm.DeleteProductCmd, view => view.btnRemoveProduct));
+
+            d(this.OneWayBind(ViewModel, vm => vm.Shoplifters, view => view.cmbShoplifters.ItemsSource));
+            d(this.Bind(ViewModel, vm => vm.SelectedShoplifter, view => view.cmbShoplifters.SelectedItem));
+
+            d(this.BindCommand(ViewModel, vm => vm.AddShoplifterCmd, view => view.btnAddShoplifter));
+            d(this.BindCommand(ViewModel,vm => vm.EditShoplifterCmd,view => view.btnEditShoplifter));
+            d(this.BindCommand(ViewModel, vm => vm.DeleteShoplifterCmd, view => view.btnRemoveShoplifter));
 
             d(this.Bind(ViewModel,vm => vm.Description, view => view.txtDescription.Text));
             d(this.Bind(ViewModel, vm => vm.Manager, view => view.txtManager.Text));

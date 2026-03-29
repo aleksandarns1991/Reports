@@ -76,6 +76,7 @@ C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.Gen
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.AssemblyInfoInputs.cache
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.AssemblyInfo.cs
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.sourcelink.json
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.csproj.Fody.CopyLocal.cache
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.csproj.Fody.RuntimeCopyLocal.cache
 C:\Users\Administrator\source\repos\Reports\Reports\obj\Debug\net8.0\Reports.csproj.Up2Date

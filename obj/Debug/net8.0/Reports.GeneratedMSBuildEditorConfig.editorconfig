@@ -35,3 +35,12 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/Administrator/source/repos/Reports/Reports/Views/ReportWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Administrator/source/repos/Reports/Reports/Views/ShopliftersWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Administrator/source/repos/Reports/Reports/Views/ShoplifterWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/Administrator/source/repos/Reports/Reports/Views/StatisticWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

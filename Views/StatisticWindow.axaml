@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="Reports.StatisticWindow"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Title="Statistic"
+        SizeToContent="WidthAndHeight">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto"
+        Margin="20">
+	  <Grid.Styles>
+		  <Style Selector="TextBlock">
+			  <Setter Property="HorizontalAlignment" Value="Right"/>
+              <Setter Property="VerticalAlignment" Value="Center"/>
+              <Setter Property="Margin" Value="5"/>
+          </Style>
+
+          <Style Selector="TextBlock.data">
+			  <Setter Property="HorizontalAlignment" Value="Left"/>
+              <Setter Property="FontWeight" Value="Bold"/>
+              <Setter Property="Margin" Value="5"/>
+          </Style>
+
+          <Style Selector="TextBox">
+			  <Setter Property="HorizontalAlignment" Value="Left"/>
+              <Setter Property="VerticalAlignment" Value="Center"/>
+              <Setter Property="IsReadOnly" Value="True"/>
+              <Setter Property="Background" Value="LightGray"/>
+              <Setter Property="Width" Value="200"/>
+              <Setter Property="Height" Value="30"/>
+              <Setter Property="Margin" Value="5"/>
+          </Style>
+      </Grid.Styles>
+
+      <TextBlock Text="Guard name:"/>
+      <TextBox Name="txtFullName" Grid.Column="1"/>
+
+      <TextBlock Text="Guard ID:" Grid.Row="1"/>
+      <TextBox Name="txtGuardID" Grid.Row="1" Grid.Column="1"/>
+
+      <TextBlock Text="Police arrived:" Grid.Row="2"/>
+      <TextBlock Name="txtReported" 
+                 HorizontalAlignment="Left"
+                 Grid.Row="2" Grid.Column="1"/>
+
+      <TextBlock Text="Paid:" Grid.Row="3"/>
+      <TextBlock Name="txtPaid" 
+                 HorizontalAlignment="Left"
+                 Grid.Row="3" Grid.Column="1"/>
+
+      <TextBlock Text="Count:" Grid.Row="4"/>
+      <TextBlock Name="txtCount" Classes="data" Grid.Row="4" Grid.Column="1"/>
+
+      <TextBlock Text="Total:" Grid.Row="5"/>
+      <TextBlock Name="txtTotal" Classes="data" Grid.Row="5" Grid.Column="1"/>
+  </Grid>
+</Window>

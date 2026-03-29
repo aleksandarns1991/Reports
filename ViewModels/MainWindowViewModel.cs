@@ -26,6 +26,8 @@ namespace Reports.ViewModels
         public ReactiveCommand<Unit,Unit> AddReportCmd { get; }
         public ReactiveCommand<Unit, Unit> EditReportCmd { get; }
         public ReactiveCommand<Unit, Unit> DeleteReportCmd { get; }
+        public ReactiveCommand<Unit, Unit> ShowStatisticCmd { get; }
+        public ReactiveCommand<Unit, Unit> ShowShopliftersCmd { get; }
 
         private readonly IDataPersistence<Guard> persistence;
 
@@ -42,7 +44,9 @@ namespace Reports.ViewModels
             DeleteGuardCmd = ReactiveCommand.Create(DeleteGuard,canModifyGuard);
             AddReportCmd = ReactiveCommand.CreateFromTask(AddReportAsync,canAddReport); 
             EditReportCmd = ReactiveCommand.CreateFromTask(EditReportAsync,canModifyReport);    
-            DeleteReportCmd = ReactiveCommand.Create(DeleteReport,canModifyReport); 
+            DeleteReportCmd = ReactiveCommand.Create(DeleteReport,canModifyReport);
+            ShowStatisticCmd = ReactiveCommand.CreateFromTask(ShowStatisticAsync, canModifyGuard);
+            ShowShopliftersCmd = ReactiveCommand.CreateFromTask(ShowShopliftersAsync,canModifyGuard);
         }
 
         #region Load data
@@ -120,9 +124,12 @@ namespace Reports.ViewModels
                 SelectedReport.StoreNumber = report.StoreNumber;
                 SelectedReport.CreatedAt = report.CreatedAt;
                 SelectedReport.Description = report.Description;
+                SelectedReport.Manager = report.Manager;
                 SelectedReport.IsPaid = report.IsPaid;
                 SelectedReport.IsReported = report.IsReported;
+                SelectedReport.Total = report.Total;
                 SelectedReport.Products = new ObservableCollection<Product>(report.Products);
+                SelectedReport.Shoplifters = new ObservableCollection<Shoplifter>(report.Shoplifters);  
             }
         }
 
@@ -130,6 +137,24 @@ namespace Reports.ViewModels
         {
             SelectedGuard?.Reports.Remove(SelectedReport!);
             SelectedReport = SelectedGuard?.Reports.FirstOrDefault();
+        }
+
+        #endregion
+
+        #region Statistics
+        
+        private async Task ShowStatisticAsync()
+        {
+            var vm = new StatisticViewModel(SelectedGuard!);
+            await Interactions.StatisticInteraction.Handle(vm);
+        }
+
+        private async Task ShowShopliftersAsync()
+        {
+            var shoplifters = Guards.SelectMany(g => g.Reports).SelectMany(r => r.Shoplifters).DistinctBy(s => s.ImagePath);
+
+            var vm = new ShopliftersViewModel(shoplifters);
+            await Interactions.ShopliftersInteraction.Handle(vm);
         }
 
         #endregion

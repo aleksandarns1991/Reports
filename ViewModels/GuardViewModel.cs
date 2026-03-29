@@ -34,12 +34,11 @@ namespace Reports.ViewModels
 
         public GuardViewModel()
         {
+            OpenFileDialogCmd = ReactiveCommand.CreateFromTask(OpenFileDialogAsync);
             SaveGuardCmd = ReactiveCommand.Create(SaveGuard, this.WhenAnyValue(x => x.FirstName, x => x.LastName,
                                                                              (firstName, lastName) =>
                                                                              !string.IsNullOrEmpty(firstName)
                                                                           && !string.IsNullOrEmpty(lastName)));
-
-            OpenFileDialogCmd = ReactiveCommand.CreateFromTask(OpenFileDialogAsync);
         }
 
         private async Task OpenFileDialogAsync()

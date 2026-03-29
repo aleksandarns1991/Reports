@@ -21,7 +21,7 @@
             <Style Selector="TextBox">
 				<Setter Property="HorizontalAlignment" Value="Left"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Width" Value="200"/>
+                <Setter Property="Width" Value="230"/>
                 <Setter Property="Height" Value="30"/>
                 <Setter Property="Margin" Value="5"/>
             </Style>

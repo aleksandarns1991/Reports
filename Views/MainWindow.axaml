@@ -11,7 +11,7 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Reports">
-    <Grid ColumnDefinitions="Auto,*" Margin="20">
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="20">
 		<Grid.Styles>           
 			<Style Selector="HeaderedContentControl">
                 <Setter Property="Foreground" Value="Gray"/>
@@ -40,9 +40,17 @@
                                 <Setter Property="Height" Value="30"/>
                                 <Setter Property="Margin" Value="5"/>
             </Style>
+
+            <Style Selector="Button.stats">
+				<Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Width" Value="200"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
         </Grid.Styles>
 
-        <HeaderedContentControl Header="Guards">
+        <HeaderedContentControl Header="Guards" Grid.Row="0">
                 <Grid RowDefinitions="Auto,Auto,Auto">
 					<TextBlock Text="Select security guard:" Margin="5,0,0,15"/>
                     <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -63,7 +71,15 @@
                 </Grid>
         </HeaderedContentControl>
 
-        <HeaderedContentControl Header="Reports" Grid.Column="1">
+        <HeaderedContentControl Header="Stats" Grid.Row="1">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Orientation="Vertical">
+                <Button Classes="stats" Name="btnStats" Content="Statistic"/>
+                <Button Classes="stats" Name="btnShoplifters" Content="Shoplifters"/>                
+            </StackPanel>
+        </HeaderedContentControl>
+
+        <HeaderedContentControl Header="Reports" Grid.Column="1" Grid.RowSpan="2">
             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
 				<Grid.Styles>
 					<Style Selector="Grid > TextBlock">

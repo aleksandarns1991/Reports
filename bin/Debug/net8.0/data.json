@@ -1,9 +1,37 @@
 [
   {
-    "GuardID": null,
+    "GuardID": "12161",
+    "Reports": [
+      {
+        "Title": "Sprecen pokusaj kradje",
+        "StoreNumber": 174,
+        "CreatedAt": "2026-02-27T00:00:00",
+        "Description": "NN lice primeceno kako sakriva artikal ispod torbe pre kupovine zaustavljeno prilikom izlaza i prekontrolisano. Pregledom ustanovljeno da pomenuti artikal nije placen. Lice platilo kradenu robu i napustilo objekat. ",
+        "Manager": "Boban Stanisic",
+        "IsPaid": true,
+        "IsReported": false,
+        "Total": 1499.0,
+        "Products": [
+          {
+            "ID": "0",
+            "Title": "Zenski prsluk ",
+            "Quantity": 1,
+            "Price": 1499.0
+          }
+        ],
+        "Shoplifters": [
+          {
+            "PersonalID": "-",
+            "IsKnown": false,
+            "FirstName": "NN",
+            "LastName": " ",
+            "ImagePath": "C:\\Users\\Administrator\\Downloads\\f3aebc3d-0401-4895-a766-dea4d86e0524.jpg"
+          }
+        ]
+      }
+    ],
     "FirstName": "Aleksandar",
     "LastName": "Popadic",
-    "ImagePath": "C:\\Users\\Administrator\\OneDrive\\Desktop\\Test\\512693432_10226593489880311_1687553276234511045_n.jpg",
-    "Reports": []
+    "ImagePath": null
   }
 ]
